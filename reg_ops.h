@@ -4,13 +4,13 @@
 #include "Arduino.h"
 
 /* Set the value of register */
-#define REGISTER_SET(addr, value)		\
-	do {								              \
-		(*((uint8_t *)(addr))) = value;	\
-	} while(0);
+#define REGISTER_SET(addr, value)     \
+  do {                                \
+    (*((uint8_t *)(addr))) = value;   \
+  } while(0);
 
 /* Get the value of register */
-#define REGISTER_GET(addr)	(*((uint8_t *)(addr)))
+#define REGISTER_GET(addr)  (*((uint8_t *)(addr)))
 
 /* Set the bit of the given register */
 #define REGISTER_BIT_SET(addr, value, bitnum)     \
