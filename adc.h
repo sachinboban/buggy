@@ -22,17 +22,17 @@
 #define ADC_REF_VOLTAGE_RESVD		(0x2)	/* Reserved */
 #define ADC_REF_VOLTAGE_INT			(0x3)	/* Internal ref voltage (1.1V) */
 
-/* Voltage Reference Selection bitshift */
-#define ADC_REF_VOLTAGE_BIT_SHIFT	(0x6)
+
+#define ADC_REF_VOLTAGE_BIT (0x6) /* Voltage Reference Selection bit */
 
 /*
  * ADC Control and Status Register A
  */
-#define ADC_ENABLE				(0x1)	/* Enable ADC */
-#define ADC_ENABLE_BIT_SHIFT	(0x7)	/* ADC Enable bit shift */
+#define ADC_ENABLE			(0x1)	/* Enable ADC */
+#define ADC_ENABLE_BIT  (0x7) /* ADC Enable bit shift */
 
-#define ADC_START_CONV				(0x1)	/* Start ADC conversion */
-#define ADC_START_CONV_BIT_SHIFT	(0x6)	/* Start ADC conversion bit shift */
+#define ADC_START_CONV			(0x1)	/* Start ADC conversion */
+#define ADC_START_CONV_BIT  (0x6)	/* Start ADC conversion bit */
 
 /*
  * Analog Pins
