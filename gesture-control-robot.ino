@@ -1,4 +1,5 @@
 #include "adc.h"
+#include "move.h"
 #include "Arduino.h"
 
 void setup()
@@ -21,8 +22,29 @@ void test_adc()
   Serial.print(analogRead(ADC_PIN_0));
 }
 
+void test_move()
+{
+  move_stop();
+  delay(1);
+  move_forward();
+  delay(2);
+  move_stop();
+  move_right();
+  delay(1);
+  move_stop();
+  move_left();
+  delay(1);
+  move_forward();
+  delay(2);
+  move_stop();
+  move_backward();
+  delay(2);
+  move_stop();
+}
+
 void loop()
 {
-  test_adc();
+  //test_adc();
+  test_move();
   delay(1000);
 }
