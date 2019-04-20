@@ -8,21 +8,21 @@
  * the motors on the left, while L298N_R denotes
  * the L298N controlling the motors on the right
  */
-#define L298N_L_EN_B  (3)
-#define L298N_L_IN_3  (2)
-#define L298N_L_IN_4  (4)
+#define L298N_L_EN_B  (9)
+#define L298N_L_IN_3  (11)
+#define L298N_L_IN_4  (8)
 
-#define L298N_L_EN_A  (11)
-#define L298N_L_IN_1  (12)
-#define L298N_L_IN_2  (13)
+#define L298N_L_EN_A  (10)
+#define L298N_L_IN_1  (13)
+#define L298N_L_IN_2  (12)
 
-#define L298N_R_EN_A  (10)
-#define L298N_R_IN_1  (9)
-#define L298N_R_IN_2  (8)
+#define L298N_R_EN_A  (6)
+#define L298N_R_IN_1  (7)
+#define L298N_R_IN_2  (4)
 
 #define L298N_R_EN_B  (5)
-#define L298N_R_IN_3  (6)
-#define L298N_R_IN_4  (7)
+#define L298N_R_IN_3  (3)
+#define L298N_R_IN_4  (2)
 
 /* Pins controlling motor L1 */
 #define MTR_L1_SPEED_PIN  L298N_L_EN_B
@@ -122,15 +122,15 @@ void motor_init(uint8_t id)
     pinMode(mtr_pin_map[id].speed_pin, OUTPUT);
     pinMode(mtr_pin_map[id].dir_pin1, OUTPUT);
     pinMode(mtr_pin_map[id].dir_pin2, OUTPUT);
-    Serial.print("***begin init***\n");
-    Serial.print(id);
-    Serial.print(", ");
-    Serial.print(mtr_pin_map[id].speed_pin);
-    Serial.print(", ");
-    Serial.print(mtr_pin_map[id].dir_pin1);
-    Serial.print(", ");
-    Serial.print(mtr_pin_map[id].dir_pin2);
-    Serial.print("***end init***\n");
+//    Serial.print("***begin init***\n");
+//    Serial.print(id);
+//    Serial.print(", ");
+//    Serial.print(mtr_pin_map[id].speed_pin);
+//    Serial.print(", ");
+//    Serial.print(mtr_pin_map[id].dir_pin1);
+//    Serial.print(", ");
+//    Serial.print(mtr_pin_map[id].dir_pin2);
+//    Serial.print("***end init***\n");
   
     /* Stop motor */
     motor_stop(id);
@@ -149,8 +149,8 @@ void motor_configure(uint8_t id, int8_t dir, uint8_t spd)
     mtr_cfg[id].dir = dir;
     mtr_cfg[id].spd = spd;
     
-    Serial.print("[CONFIG]");
-    mtr_print_cfg_info(id, mtr_cfg[id].dir, mtr_cfg[id].spd);
+    //Serial.print("[CONFIG]");
+    //mtr_print_cfg_info(id, mtr_cfg[id].dir, mtr_cfg[id].spd);
   } else {
     Serial.print("motor_configure: Invalid motor id\n");
   }
@@ -159,8 +159,8 @@ void motor_configure(uint8_t id, int8_t dir, uint8_t spd)
 void motor_rotate(uint8_t id)
 {
   if (MTR_ID_R2 >= id) {
-    Serial.print("[ROT]");
-    mtr_print_cfg_info(id, mtr_cfg[id].dir, mtr_cfg[id].spd);
+    //Serial.print("[ROT]");
+    //mtr_print_cfg_info(id, mtr_cfg[id].dir, mtr_cfg[id].spd);
     
     analogWrite(mtr_pin_map[id].speed_pin, mtr_cfg[id].spd);
     if (MTR_ROT_DIR_CLK == mtr_cfg[id].dir) {
