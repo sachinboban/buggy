@@ -13,7 +13,10 @@ void setup()
   adc_enable();
 
   /* Enable motors */
-  motor_init();
+  motor_init(MTR_ID_L1);
+  motor_init(MTR_ID_R1);
+  motor_init(MTR_ID_L2);
+  motor_init(MTR_ID_R2);
 }
 
 void test_adc()
@@ -27,34 +30,80 @@ void test_adc()
 
 void test_motor()
 {
-  motor_stop_all();
-  motor_configure(MTR_SET_L, MTR_SET_ROT_CLK, 200);
-  motor_configure(MTR_SET_R, MTR_SET_ROT_CLK, 200);
-  motor_rotate(MTR_SET_L);
-  motor_rotate(MTR_SET_R);
-  delay(3000);
-  motor_stop_all();
-  motor_configure(MTR_SET_L, MTR_SET_ROT_ACLK, 100);
-  motor_configure(MTR_SET_R, MTR_SET_ROT_CLK, 100);
-  motor_rotate(MTR_SET_L);
-  motor_rotate(MTR_SET_R);
-  delay(500);
-  motor_configure(MTR_SET_L, MTR_SET_ROT_CLK, 200);
-  motor_configure(MTR_SET_R, MTR_SET_ROT_CLK, 200);
-  motor_rotate(MTR_SET_L);
-  motor_rotate(MTR_SET_R);
-  delay(3000);
-  motor_stop_all();
-  motor_configure(MTR_SET_L, MTR_SET_ROT_CLK, 100);
-  motor_configure(MTR_SET_R, MTR_SET_ROT_ACLK, 100);
-  motor_rotate(MTR_SET_L);
-  motor_rotate(MTR_SET_R);
-  delay(500);
+  /* Forward */
+  motor_configure(MTR_ID_L1, MTR_ROT_DIR_CLK, 255);
+  motor_configure(MTR_ID_R1, MTR_ROT_DIR_CLK, 255);
+  motor_configure(MTR_ID_L2, MTR_ROT_DIR_CLK, 255);
+  motor_configure(MTR_ID_R2, MTR_ROT_DIR_CLK, 255);
+  motor_rotate(MTR_ID_L1);
+  motor_rotate(MTR_ID_R1);
+  motor_rotate(MTR_ID_L2);
+  motor_rotate(MTR_ID_R2);
+//
+//  /* stop all */
+//  motor_stop(MTR_ID_L1);
+//  motor_stop(MTR_ID_R1);
+//  motor_stop(MTR_ID_L2);
+//  motor_stop(MTR_ID_R2);
+//  delay(500);
+//
+//  /* turn left */
+//  motor_configure(MTR_ID_L1, MTR_ROT_DIR_CLK, 0);
+//  motor_configure(MTR_ID_R1, MTR_ROT_DIR_CLK, 100);
+//  motor_configure(MTR_ID_L2, MTR_ROT_DIR_CLK, 0);
+//  motor_configure(MTR_ID_R2, MTR_ROT_DIR_CLK, 100);
+//  motor_rotate(MTR_ID_L1);
+//  motor_rotate(MTR_ID_L2);
+//  motor_rotate(MTR_ID_R1);
+//  motor_rotate(MTR_ID_R2);
+//  delay(500);
+//
+//  /* stop all */
+//  motor_stop(MTR_ID_L1);
+//  motor_stop(MTR_ID_R1);
+//  motor_stop(MTR_ID_L2);
+//  motor_stop(MTR_ID_R2);
+//  delay(500);
+//  
+//  /* Forward */
+//  motor_configure(MTR_ID_L1, MTR_ROT_DIR_CLK, 200);
+//  motor_configure(MTR_ID_R1, MTR_ROT_DIR_CLK, 200);
+//  motor_configure(MTR_ID_L2, MTR_ROT_DIR_CLK, 200);
+//  motor_configure(MTR_ID_R2, MTR_ROT_DIR_CLK, 200);
+//  motor_rotate(MTR_ID_L1);
+//  motor_rotate(MTR_ID_R1);
+//  motor_rotate(MTR_ID_L2);
+//  motor_rotate(MTR_ID_R2);
+//  delay(3000);
+//
+//  /* stop all */
+//  motor_stop(MTR_ID_L1);
+//  motor_stop(MTR_ID_R1);
+//  motor_stop(MTR_ID_L2);
+//  motor_stop(MTR_ID_R2);
+//  delay(500);
+//
+//  /* turn right */
+//  motor_configure(MTR_ID_L1, MTR_ROT_DIR_CLK, 100);
+//  motor_configure(MTR_ID_R1, MTR_ROT_DIR_ACLK, 0);
+//  motor_configure(MTR_ID_L2, MTR_ROT_DIR_CLK, 100);
+//  motor_configure(MTR_ID_R2, MTR_ROT_DIR_ACLK, 0);
+//  motor_rotate(MTR_ID_R1);
+//  motor_rotate(MTR_ID_R2);
+//  motor_rotate(MTR_ID_L1);
+//  motor_rotate(MTR_ID_L2);
+//  delay(500);
+//
+//  /* stop all */
+//  motor_stop(MTR_ID_L1);
+//  motor_stop(MTR_ID_R1);
+//  motor_stop(MTR_ID_L2);
+//  motor_stop(MTR_ID_R2);
+//  delay(500);
 }
 
 void loop()
 {
   //test_adc();
   test_motor();
-  delay(1000);
 }
