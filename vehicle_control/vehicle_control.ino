@@ -3,6 +3,7 @@
 
 void setup()
 {
+  int i;
   /* Set the serial port baud rate */
   Serial.begin(9600);
 
