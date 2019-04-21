@@ -1,4 +1,5 @@
 #include "drive.h"
+#include "receiver.h"
 #include "Arduino.h"
 
 void setup()
@@ -11,14 +12,22 @@ void setup()
 
   /* Enable drive system */
   drive_init();
+
+  /* Enable receiver */
+  receiver_init();
 }
 
 void loop()
 {
-  /*
-   * TODO:
-   * Read the Decoder pins:
-   * (D_1, D_0) conveys the direction of movement
-   * (D_3, D_2) conveys the speed for the movement
-   */
+  uint8_t dir;
+  int spd;
+
+  spd = 0;
+  dir = DRIVE_FWD;
+
+  receiver_read(&dir, &spd);
+  if (0 == spd)
+    drive_stop();
+  else
+    drive_move(dir, spd);
 }
