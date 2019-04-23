@@ -86,8 +86,8 @@ void motor_stop(uint8_t id)
 {
   if (MTR_ID_R2 >= id) {
     analogWrite(mtr_pin_map[id].speed_pin, 0);
-    digitalWrite(mtr_pin_map[id].dir_pin1, LOW);
-    digitalWrite(mtr_pin_map[id].dir_pin2, LOW);
+    gpio_write(mtr_pin_map[id].dir_pin1, GPIO_LOW);
+    gpio_write(mtr_pin_map[id].dir_pin2, GPIO_LOW);
   } else {
     Serial.print("motor_configure: Invalid motor id\n");
     return;
@@ -129,11 +129,11 @@ void motor_rotate(uint8_t id)
     analogWrite(mtr_pin_map[id].speed_pin, mtr_cfg[id].spd);
 
     if (MTR_ROT_DIR_CLK == mtr_cfg[id].dir) {
-      digitalWrite(mtr_pin_map[id].dir_pin1, HIGH);
-      digitalWrite(mtr_pin_map[id].dir_pin2, LOW);
+      gpio_write(mtr_pin_map[id].dir_pin1, GPIO_HIGH);
+      gpio_write(mtr_pin_map[id].dir_pin2, GPIO_LOW);
     } else {
-      digitalWrite(mtr_pin_map[id].dir_pin1, LOW);
-      digitalWrite(mtr_pin_map[id].dir_pin2, HIGH);
+      gpio_write(mtr_pin_map[id].dir_pin1, GPIO_LOW);
+      gpio_write(mtr_pin_map[id].dir_pin2, GPIO_HIGH);
     }
   } else {
     Serial.print("motor_configure: Invalid motor id\n");
