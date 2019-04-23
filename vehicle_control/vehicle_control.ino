@@ -19,15 +19,25 @@ void setup()
 
 void loop()
 {
-  uint8_t dir;
-  int spd;
-
-  spd = 0;
-  dir = DRIVE_FWD;
-
-  receiver_read(&dir, &spd);
-  if (0 == spd)
-    drive_stop();
-  else
-    drive_move(dir, spd);
+  drive_move(DRIVE_FWD, 200);
+  delay(1000);
+  drive_move(DRIVE_LEFT, 200);
+  delay(1000);
+  drive_move(DRIVE_RIGHT, 200);
+  delay(1000);
+  drive_move(DRIVE_BKWD, 200);
+  delay(1000);
+  drive_stop();
+  delay(1000);
+//  uint8_t dir;
+//  int spd;
+//
+//  spd = 0;
+//  dir = DRIVE_FWD;
+//
+//  receiver_read(&dir, &spd);
+//  if (0 == spd)
+//    drive_stop();
+//  else
+//    drive_move(dir, spd);
 }

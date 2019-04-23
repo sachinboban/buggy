@@ -1,17 +1,18 @@
 #include "receiver.h"
+#include "gpio.h"
 #include "Arduino.h"
 
-#define DEC_IN_PIN_0  (A2)
-#define DEC_IN_PIN_1  (A3)
-#define DEC_IN_PIN_2  (A4)
-#define DEC_IN_PIN_3  (A5)
+#define DEC_IN_PIN_0  (GPIO_PIN_A2)
+#define DEC_IN_PIN_1  (GPIO_PIN_A3)
+#define DEC_IN_PIN_2  (GPIO_PIN_A4)
+#define DEC_IN_PIN_3  (GPIO_PIN_A5)
 
 void receiver_init()
 {
-  pinMode(DEC_IN_PIN_0, INPUT);
-  pinMode(DEC_IN_PIN_1, INPUT);
-  pinMode(DEC_IN_PIN_2, INPUT);
-  pinMode(DEC_IN_PIN_3, INPUT);
+  gpio_set_mode(DEC_IN_PIN_0, GPIO_PIN_DIR_INPUT);
+  gpio_set_mode(DEC_IN_PIN_1, GPIO_PIN_DIR_INPUT);
+  gpio_set_mode(DEC_IN_PIN_2, GPIO_PIN_DIR_INPUT);
+  gpio_set_mode(DEC_IN_PIN_3, GPIO_PIN_DIR_INPUT);
 }
 
 static int bin2dec(int b0, int b1)

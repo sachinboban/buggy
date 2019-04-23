@@ -1,4 +1,5 @@
 #include "motor.h"
+#include "gpio.h"
 #include "Arduino.h"
 
 /*
@@ -8,21 +9,21 @@
  * the motors on the left, while L298N_R denotes
  * the L298N controlling the motors on the right
  */
-#define L298N_L_EN_B  (9)
-#define L298N_L_IN_3  (11)
-#define L298N_L_IN_4  (8)
+#define L298N_L_EN_B  (GPIO_PIN_9)
+#define L298N_L_IN_3  (GPIO_PIN_11)
+#define L298N_L_IN_4  (GPIO_PIN_8)
 
-#define L298N_L_EN_A  (10)
-#define L298N_L_IN_1  (13)
-#define L298N_L_IN_2  (12)
+#define L298N_L_EN_A  (GPIO_PIN_10)
+#define L298N_L_IN_1  (GPIO_PIN_13)
+#define L298N_L_IN_2  (GPIO_PIN_12)
 
-#define L298N_R_EN_A  (6)
-#define L298N_R_IN_1  (7)
-#define L298N_R_IN_2  (4)
+#define L298N_R_EN_A  (GPIO_PIN_6)
+#define L298N_R_IN_1  (GPIO_PIN_7)
+#define L298N_R_IN_2  (GPIO_PIN_4)
 
-#define L298N_R_EN_B  (5)
-#define L298N_R_IN_3  (3)
-#define L298N_R_IN_4  (2)
+#define L298N_R_EN_B  (GPIO_PIN_5)
+#define L298N_R_IN_3  (GPIO_PIN_3)
+#define L298N_R_IN_4  (GPIO_PIN_2)
 
 /* Pins controlling motor L1 */
 #define MTR_L1_SPEED_PIN  L298N_L_EN_B
@@ -97,9 +98,9 @@ void motor_init(uint8_t id)
 {
   if (MTR_ID_R2 >= id) {
     /* Set pin direction */
-    pinMode(mtr_pin_map[id].speed_pin, OUTPUT);
-    pinMode(mtr_pin_map[id].dir_pin1, OUTPUT);
-    pinMode(mtr_pin_map[id].dir_pin2, OUTPUT);
+    gpio_set_mode(mtr_pin_map[id].speed_pin, GPIO_PIN_DIR_OUTPUT);
+    gpio_set_mode(mtr_pin_map[id].dir_pin1, GPIO_PIN_DIR_OUTPUT);
+    gpio_set_mode(mtr_pin_map[id].dir_pin2, GPIO_PIN_DIR_OUTPUT);
   
     /* Stop motor */
     motor_stop(id);
