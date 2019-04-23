@@ -3,11 +3,6 @@
 
 #include "Arduino.h"
 
-#define GEAR_0  (0) /* Gear 0 speed */
-#define GEAR_1  (1) /* Gear 1 speed */
-#define GEAR_2  (2) /* Gear 2 speed */
-#define GEAR_3  (3) /* Gear 3 speed */
-
 #define GEAR_0_SPEED  (0)   /* Gear 0 speed */
 #define GEAR_1_SPEED  (150) /* Gear 1 speed */
 #define GEAR_2_SPEED  (200) /* Gear 2 speed */

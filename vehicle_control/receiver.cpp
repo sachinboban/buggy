@@ -2,10 +2,13 @@
 #include "gpio.h"
 #include "Arduino.h"
 
-#define DEC_IN_PIN_0  (GPIO_PIN_A2)
-#define DEC_IN_PIN_1  (GPIO_PIN_A3)
-#define DEC_IN_PIN_2  (GPIO_PIN_A4)
-#define DEC_IN_PIN_3  (GPIO_PIN_A5)
+/*
+ * GPIO pins for receiver
+ */
+#define DEC_IN_PIN_0  (GPIO_PIN_16)
+#define DEC_IN_PIN_1  (GPIO_PIN_17)
+#define DEC_IN_PIN_2  (GPIO_PIN_18)
+#define DEC_IN_PIN_3  (GPIO_PIN_19)
 
 void receiver_init()
 {

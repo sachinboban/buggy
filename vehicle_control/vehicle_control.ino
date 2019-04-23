@@ -2,6 +2,8 @@
 #include "receiver.h"
 #include "Arduino.h"
 
+#define TURN_GEAR (GEAR_1)
+
 void setup()
 {
   int i;
@@ -20,15 +22,20 @@ void setup()
 void loop()
 {
   uint8_t dir;
-  int spd;
+  int gear;
 
-  spd = 0;
+  gear = GEAR_0;
   dir = DRIVE_FWD;
 
-  receiver_read(&dir, &spd);
+  receiver_read(&dir, &gear);
 
-  if (0 == spd)
+  if ((DRIVE_LEFT == dir)
+      || (DRIVE_RIGHT == dir)) {
+    gear = TURN_GEAR;
+  }
+
+  if (GEAR_0 == gear)
     drive_stop();
   else
-    drive_move(dir, spd);
+    drive_move(dir, gear);
 }

@@ -1,14 +1,18 @@
 #ifndef ADC_H
 #define ADC_H
 
+#include "gpio.h"
 #include "Arduino.h"
 
 /*
  * Analog Pins
  */
-#define ADC_PIN_0	(14)	/* Analog Pin 0 */
-#define ADC_PIN_1	(15)	/* Analog Pin 1 */
-#define ADC_PIN_2	(16)	/* Analog Pin 2 */
+#define ADC_PIN_0 (GPIO_PIN_14) /* Analog Pin 0 */
+#define ADC_PIN_1 (GPIO_PIN_15) /* Analog Pin 1 */
+#define ADC_PIN_2 (GPIO_PIN_16) /* Analog Pin 2 */
+#define ADC_PIN_3 (GPIO_PIN_17) /* Analog Pin 3 */
+#define ADC_PIN_4 (GPIO_PIN_18) /* Analog Pin 4 */
+#define ADC_PIN_5 (GPIO_PIN_19) /* Analog Pin 5 */
 
 /*
  * @brief Enable ADC block

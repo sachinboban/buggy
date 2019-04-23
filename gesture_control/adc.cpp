@@ -1,6 +1,6 @@
 #include "adc.h"
+#include "gpio.h"
 #include "reg_ops.h"
-
 
 /*
  * ADC Registers
@@ -48,7 +48,7 @@ void adc_disable()
 /*
  * @brief Set the ADC reference voltage
  *
- * Internal helper function to set the ADC reference volatage.
+ * Internal helper function to set the ADC reference voltage.
  *
  * @mode  Shall be one of the ADC_REF_VOLTAGE_xxx macros
  */
@@ -82,6 +82,8 @@ int adc_read(uint8_t pin)
 {
   int retval = 0;
 
+  REGISTER_BIT_SET(ADC_REG_CSRA, ADC_ENABLE, ADC_ENABLE_BIT);
+
   /* Set the ADC reference voltate */
   adc_set_ref_voltage(ADC_REF_VOLTAGE_DEF);
 
@@ -92,7 +94,7 @@ int adc_read(uint8_t pin)
   REGISTER_BIT_SET(ADC_REG_CSRA, ADC_START_CONV, ADC_START_CONV_BIT);
 
   /* Wait for the conversion to complete */
-  while(1 == (REGISTER_GET(ADC_REG_CSRA) >> ADC_START_CONV_BIT) & 0x1);
+  while((REGISTER_GET(ADC_REG_CSRA) & (1 << ADC_START_CONV_BIT)));
 
   /* Read the low and high registers */
   retval = REGISTER_GET(ADC_REG_LOW);
