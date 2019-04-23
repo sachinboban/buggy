@@ -1,8 +1,10 @@
 #include "drive.h"
 #include "receiver.h"
+#include "distance.h"
 #include "Arduino.h"
 
 #define TURN_GEAR (GEAR_1)
+#define SAFE_DIST (20)
 
 void setup()
 {
@@ -10,22 +12,26 @@ void setup()
   /* Set the serial port baud rate */
   Serial.begin(9600);
 
-  DDRC &= ~((1 << 2) | (1 << 1) | (1 << 0));
+  /* Enable receiver */
+  receiver_init();
+
+  /* Enable UV sensor */
+  distance_init();
 
   /* Enable drive system */
   drive_init();
-
-  /* Enable receiver */
-  receiver_init();
 }
 
 void loop()
 {
   uint8_t dir;
   int gear;
+  int dist_cm;
 
   gear = GEAR_0;
   dir = DRIVE_FWD;
+
+  dist_cm = get_distance_cm();
 
   receiver_read(&dir, &gear);
 
@@ -34,8 +40,12 @@ void loop()
     gear = TURN_GEAR;
   }
 
-  if (GEAR_0 == gear)
+  if (GEAR_0 == gear) {
     drive_stop();
-  else
+  } else if ((DRIVE_FWD == dir)
+            && (SAFE_DIST >=  dist_cm)){
+    drive_stop();
+  } else {
     drive_move(dir, gear);
+  }
 }
