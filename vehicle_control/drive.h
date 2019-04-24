@@ -21,10 +21,11 @@ void drive_init();
 /*
  * @brief Move in the Y axis with the given speed
  *
- * @dir   Direction of movement
- * @gear  Gear
+ * @dir     Direction of movement
+ * @gear    Gear
+ * @sub_dir Sub-direction used while turning left or right
  */
-void drive_move(uint8_t dir, uint8_t gear);
+void drive_move(uint8_t dir, uint8_t gear, uint8_t sub_dir);
 
 /*
  * @brief Stop the vehicile

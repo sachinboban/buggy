@@ -3,7 +3,6 @@
 #include "distance.h"
 #include "Arduino.h"
 
-#define TURN_GEAR (GEAR_1)
 #define SAFE_DIST (20)
 
 void setup()
@@ -27,6 +26,7 @@ void loop()
   uint8_t dir;
   int gear;
   int dist_cm;
+  uint8_t sub_dir;
 
   gear = GEAR_0;
   dir = DRIVE_FWD;
@@ -35,17 +35,21 @@ void loop()
 
   receiver_read(&dir, &gear);
 
+  sub_dir = 0;
+
   if ((DRIVE_LEFT == dir)
       || (DRIVE_RIGHT == dir)) {
-    gear = TURN_GEAR;
-  }
+    /*
+     * Get the sub-direction and sub-direction speed.
+     */
+    sub_dir = (gear >> 1);
+    gear = (gear & 1);
 
-  if (GEAR_0 == gear) {
+  if ((DRIVE_FWD == dir) && (GEAR_0 == gear)) {
     drive_stop();
-  } else if ((DRIVE_FWD == dir)
-            && (SAFE_DIST >=  dist_cm)){
+  } else if ((DRIVE_FWD == dir) && (SAFE_DIST >=  dist_cm)){
     drive_stop();
   } else {
-    drive_move(dir, gear);
+    drive_move(dir, gear, sub_dir);
   }
 }

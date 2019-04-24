@@ -2,9 +2,6 @@
 #include "gpio.h"
 #include "Arduino.h"
 
-#define SPD_MIN (0)
-#define SPD_MAX (100)
-
 #define ENC_PIN_0  (GPIO_PIN_9)
 #define ENC_PIN_1  (GPIO_PIN_10)
 #define ENC_PIN_2  (GPIO_PIN_11)
@@ -21,10 +18,7 @@ void transmit_init()
 
 void transmit(uint8_t dir, int spd)
 {
-  int mapped_spd;
   int en0_val, en1_val, en2_val, en3_val;
-
-   mapped_spd = map(spd, SPD_MIN, SPD_MAX, 0, 3);
 
   en0_val = LOW;
   en1_val = LOW;
@@ -44,19 +38,28 @@ void transmit(uint8_t dir, int spd)
     en1_val = HIGH;
   }
 
-  if (0 == mapped_spd) {
+  if (0 == spd) {
     en2_val = LOW;
     en3_val = LOW;
-  } else if(1 == mapped_spd) {
+  } else if(1 == spd) {
     en2_val = HIGH;
     en3_val = LOW;
-  } else if(2 == mapped_spd) {
+  } else if(2 == spd) {
     en2_val = LOW;
     en3_val = HIGH;
-  } else if(3 == mapped_spd) {
+  } else if(3 == spd) {
     en2_val = HIGH;
     en3_val = HIGH;
   }
+
+  Serial.print(en3_val);
+  Serial.print(", ");
+  Serial.print(en2_val);
+  Serial.print(", ");
+  Serial.print(en1_val);
+  Serial.print(", ");
+  Serial.print(en0_val);
+  Serial.print("\n");
 
   gpio_write(ENC_PIN_0,en0_val);
   gpio_write(ENC_PIN_1,en1_val);
