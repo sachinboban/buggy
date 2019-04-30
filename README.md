@@ -63,4 +63,4 @@ The X and Y values are read by the accelerometer based on the gestures made. The
 On the receiver side, these values are further decoded for direction and speed control by making the respective motors rotate clockwise/anti-clockwise or by varying the PWM for speed control respectively. Also, an analog read on pins A0 and A1 are used for obstacle detection, thus stopping the forward movement of the vehicle when a certain distance value between the obstacle and the vehicle is obtained. The calculations for these are included in the code.
 
 
-For further detailed information regarding this project, please take a look at the report and other important files available under docs.
+For further detailed information regarding this project, please take a look at the report and other important files available under [docs](https://github.com/sachinboban/gesture-control-robot/tree/master/docs).
