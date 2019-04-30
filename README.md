@@ -102,12 +102,14 @@ and speed values.
 
 The encoding of the 4 pins are as follows:
 * Enc1:Enc0 - Direction
-  | Enc1 | Enc0 | Direction |
-  |:----:|:----:|:----------|
-  | 0    | 0    | Forward   |
-  | 0    | 1    | Backward  |
-  | 1    | 0    | Left      |
-  | 1    | 1    | Right     |
+
+  |  Enc1  |  Enc0  | Direction |
+  | :----: | :----: | --------- |
+  | 0      | 0      | Forward   |
+  | 0      | 1      | Backward  |
+  | 1      | 0      | Left      |
+  | 1      | 1      | Right     |
+
 * Enc3:Enc2 - These pins are configured depending on the direction
   + If direction is forward/backward, these pins represent the gear/speed with
     which the vehicle shall move forward/backward respectively
