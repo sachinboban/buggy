@@ -12,7 +12,7 @@ right or come to a halt.
 
 ## File organization
 * `docs/`: This folder contains all related documents. This includes all the
-   component data sheets, Project reports etc.
+   component Datasheets, Project report, Project presentation and video.
 * `gesture_control/`: Source code for gesture controller.
   + ADC: `adc.h`, `adc.cpp`
   + GPIO: `gpio.h`, `gpio.cpp`
@@ -99,8 +99,8 @@ The X and Y values are read by the accelerometer based on the gestures made.
 These values are read via ADC (refer to adc.h) and are compared with predefined
 reference values for X and Y axes to encode the 4 digital pins for directions
 and speed values.
-> The endoing of the 4 pins are bit complex. Refer to the Project Report for the
-> same.
+
+The encoding of the 4 pins are bit complex. Refer to the Project Report for the same.
 
 The data is then transferred via the RF transmitter.
 
