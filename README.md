@@ -9,6 +9,11 @@ right or come to a halt.
 * Wireless control
 * Forward/Backward motion with 3-level speed controls
 * Turn Left/Right both with and without forward/backward motion
+* Front obstacle sensing to prevent collision during motion
+
+# File organization
+
+
 
 # Software requirements
 
