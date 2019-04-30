@@ -34,7 +34,7 @@ right or come to a halt.
 ## Software Setup
 Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software/).
 Arduino IDE is used to edit, compile and upload the code to the
-Arduino Uno board.
+Arduino Uno.
 
 ## Hardware and Pin Setup
 This project can be broadly classified and designed into two major parts:
