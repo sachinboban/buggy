@@ -12,7 +12,7 @@ right or come to a halt.
 
 # Software requirements
 
-Download and install the [Arduino IDE] (https://www.arduino.cc/en/Main/Software) to compile and run the .ino files.
+Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software/) to compile and run the .ino files.
 
 # Hardware requirements
 
