@@ -53,7 +53,7 @@ Connect the 2 data pins of the RF receiver to the DIN pin( Pin 14) of the decode
 #define L298N_R_IN_3  (GPIO_PIN_3)
 #define L298N_R_IN_4  (GPIO_PIN_2)
 
-
+The TRIG and ECHO pin of the ultrasonic sensor are connected to the A0 and A1 pin of the Arduino. The rest of the connections are as seen in the wiring diagram.
 
 
 
