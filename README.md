@@ -33,7 +33,7 @@ right or come to a halt.
 
 ## Software Setup
 Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software/).
-Arduino IDE is used to edit, compile as well as uploading the code to the
+Arduino IDE is used to edit, compile and upload the code to the
 Arduino Uno board.
 
 ## Hardware and Pin Setup
@@ -120,4 +120,4 @@ distance.cpp).
 * [Transmitter Data Sheet](docs/RF434_transmitter.pdf)
 * [Receiver Data Sheet](docs/RF434_receiver.pdf)
 * [Accelerometer (ADXL335) Data Sheet](docs/adxl335.pdf)
-* [Ultra-Sonic Sensor (HC-SR04) Data Sheet](docs/HCSR04.pdf)
+* [Ultrasonic Sensor (HC-SR04) Data Sheet](docs/HCSR04.pdf)
