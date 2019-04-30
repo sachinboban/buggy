@@ -45,11 +45,12 @@ void loop()
     sub_dir = (gear >> 1);
     gear = (gear & 1);
 
-  if ((DRIVE_FWD == dir) && (GEAR_0 == gear)) {
-    drive_stop();
-  } else if ((DRIVE_FWD == dir) && (SAFE_DIST >=  dist_cm)){
-    drive_stop();
-  } else {
-    drive_move(dir, gear, sub_dir);
+    if ((DRIVE_FWD == dir) && (GEAR_0 == gear)) {
+      drive_stop();
+    } else if ((DRIVE_FWD == dir) && (SAFE_DIST >=  dist_cm)){
+      drive_stop();
+    } else {
+      drive_move(dir, gear, sub_dir);
+    }
   }
 }

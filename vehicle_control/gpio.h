@@ -48,5 +48,12 @@ void gpio_set_mode(uint8_t pin, uint8_t dir_mode);
  */
 void gpio_write(uint8_t pin, uint8_t val);
 
+/*
+ * @brief Get the value of the given GPIO pin
+ *
+ * @pin       GPIO pin (GPIO_PIN_xx)
+ * @return    Value of the given GPIO pin
+ */
+uint8_t gpio_read(uint8_t pin);
 
 #endif  /* GPIO_H */

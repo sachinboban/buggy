@@ -72,3 +72,43 @@ void gpio_write(uint8_t pin, uint8_t val)
 
   REGISTER_BIT_SET(port_addr, val, bit_offset);
 }
+
+uint8_t gpio_read(uint8_t pin)
+{
+  uint8_t port_addr;
+  uint8_t bit_offset;
+  uint8_t val;
+
+  if ((GPIO_PIN_19 < pin)
+      || (GPIO_HIGH < val)) {
+    return GPIO_LOW;
+  }
+
+  if ((GPIO_PIN_0 <= pin)
+      && (GPIO_PIN_7 >= pin)) {
+    /* Port D */
+    port_addr = GPIO_REG_PORT_D;
+    bit_offset = pin;
+  } else if ((GPIO_PIN_8 <= pin)
+             && (GPIO_PIN_13 >= pin)) {
+    /* Port B */
+    port_addr = GPIO_REG_PORT_B;
+    bit_offset = pin - GPIO_PIN_8;
+  } else if ((GPIO_PIN_14 <= pin)
+             && (GPIO_PIN_19 >= pin)) {
+    /* Analog pin (Port C) */
+    port_addr = GPIO_REG_PORT_C;
+    bit_offset = pin - GPIO_PIN_14;
+  }
+
+  val = REGISTER_GET(port_addr);
+  val = ((val >> bit_offset) & 1);
+
+  if (0 == val) {
+    val = GPIO_LOW;
+  } else {
+    val = GPIO_HIGH;
+  }
+
+  return val;
+}

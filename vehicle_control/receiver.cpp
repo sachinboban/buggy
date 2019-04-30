@@ -33,10 +33,10 @@ void receiver_read(uint8_t *dir, int *spd)
   *dir = 0;
   *spd = 0;
 
-  d0_eval = digitalRead(DEC_IN_PIN_0);
-  d1_eval = digitalRead(DEC_IN_PIN_1);
-  d2_eval = digitalRead(DEC_IN_PIN_2);
-  d3_eval = digitalRead(DEC_IN_PIN_3);
+  d0_eval = gpio_read(DEC_IN_PIN_0);
+  d1_eval = gpio_read(DEC_IN_PIN_1);
+  d2_eval = gpio_read(DEC_IN_PIN_2);
+  d3_eval = gpio_read(DEC_IN_PIN_3);
 
   *dir = bin2dec(d0_eval, d1_eval);
   *spd = bin2dec(d2_eval, d3_eval);

@@ -1,6 +1,7 @@
 #include "motor.h"
 #include "gpio.h"
 #include "Arduino.h"
+#include "pwm.h"
 
 /*
  * Pins connected to the L298N
@@ -96,6 +97,7 @@ void motor_stop(uint8_t id)
 
 void motor_init(uint8_t id)
 {
+  pwm_init();
   if (MTR_ID_R2 >= id) {
     /* Set pin direction */
     gpio_set_mode(mtr_pin_map[id].speed_pin, GPIO_PIN_DIR_OUTPUT);
@@ -126,7 +128,7 @@ void motor_configure(uint8_t id, int8_t dir, uint8_t spd)
 void motor_rotate(uint8_t id)
 {
   if (MTR_ID_R2 >= id) {    
-    analogWrite(mtr_pin_map[id].speed_pin, mtr_cfg[id].spd);
+    pwm_write(mtr_pin_map[id].speed_pin, mtr_cfg[id].spd);
 
     if (MTR_ROT_DIR_CLK == mtr_cfg[id].dir) {
       gpio_write(mtr_pin_map[id].dir_pin1, GPIO_HIGH);
