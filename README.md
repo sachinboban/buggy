@@ -135,7 +135,7 @@ the vehicle if an obstacle is detected within a safe distance.
 ## Project Files
 * [Report](docs/project_report.pdf)
 * [Slides](docs/presenation.pdf)
-* [Demo Video](https://youtu.be/Gb56p60mjdo);
+* [Demo Video](https://youtu.be/Gb56p60mjdo)
 
 ## References
 * [Getting started with Arduino](https://www.arduino.cc/en/Guide/HomePage)
