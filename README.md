@@ -22,4 +22,5 @@ This project can be divided and designed into two major parts:
 1. Transmitter side:
 
 The components used on the transmitter side include a 2 axis accelerometer(ADXL335), an encoder(HT12E), a 433MHz RF     transmitter, a simple copper wire to be used as an antenna and the arduino uno board built using the ATmega32 chip. 
+Connect pins 
 
