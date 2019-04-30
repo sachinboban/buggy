@@ -100,7 +100,25 @@ These values are read via ADC (refer to adc.h) and are compared with predefined
 reference values for X and Y axes to encode the 4 digital pins for directions
 and speed values.
 
-The encoding of the 4 pins are bit complex. Refer to the Project Report for the same.
+The encoding of the 4 pins are as follows:
+* Enc1:Enc0 - Direction
+  | Enc1 | Enc0 | Direction |
+  |:----:|:----:|:----------|
+  | 0    | 0    | Forward   |
+  | 0    | 1    | Backward  |
+  | 1    | 0    | Left      |
+  | 1    | 1    | Right     |
+* Enc3:Enc2 - These pins are configured depending on the direction
+  + If direction is forward/backward, these pins represent the gear/speed with
+    which the vehicle shall move forward/backward respectively
+  + If direction is left/right, these pins denotes sub-direction (i.e., move
+    forward/backward while turning):
+    - Enc2
+      * No sub-direction, i.e., pure left/right turn
+      * Enc3 shall be interpreted as sub-direction
+    - Enc3: Sub-direction (valid only if Enc2 = 1)
+      * Forward
+      * Backward
 
 The data is then transferred via the RF transmitter.
 
@@ -108,8 +126,16 @@ On the receiver side, these values are further decoded for direction and speed
 control by making the respective motors rotate clockwise/anti-clockwise as well
 as varying the PWM for speed control respectively. Also, an ADC read on pins A0
 and A1 are used for obstacle detection, thus stopping the forward movement of
-the vehicle if an obstacle is detected within a safe distance (distance.h and
-distance.cpp).
+the vehicle if an obstacle is detected within a safe distance.
+
+> Drive system controls individual motors to move the robot in the required
+> directions. Refer to the [report](docs/project_report.pdf) for detailed
+> information on individual motor movement.
+
+## Project Files
+* [Report](docs/project_report.pdf)
+* [Slides](docs/presenation.pdf)
+* [Demo Video](https://youtu.be/Gb56p60mjdo);
 
 ## References
 * [Getting started with Arduino](https://www.arduino.cc/en/Guide/HomePage)
