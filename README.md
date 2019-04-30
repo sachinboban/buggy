@@ -3,17 +3,16 @@
 A gesture controlled robot is a simple vehicle, whose movement is
 controlled by the gestures or movement of a simple controller. Depending on the
 gesture made using the controller, the robot can move forward, backward, left,
-right or halt. The robot can also move forward or backward while making a left
-or right turn.
+right or come to a halt.
 
 ## Features
 * Wireless control
-* Forward/Backward motion with 3-level speed controlled
+* Forward/Backward motion with 3-level speed controls
 * Turn Left/Right both with and without forward/backward motion
 
 # Software requirements
 
-Download and install the Arduino software to run the .ino file.
+Download and install the [Arduino IDE] (https://www.arduino.cc/en/Main/Software) to compile and run the .ino files.
 
 # Hardware requirements
 
