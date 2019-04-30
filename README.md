@@ -19,11 +19,42 @@ right or come to a halt.
 
 Download and install the [Arduino IDE](https://www.arduino.cc/en/Main/Software/) to compile and run the .ino files.
 
+Note that you would have to include the header files which we have defined like the motor.h, drive.h, transmit.h etc for the code to function appropriately.
+
 # Hardware requirements
 
-This project can be divided and designed into two major parts:
-1. Transmitter side:
+This project can be broadly classified and designed into two major parts:
+
+1. Transmitter side: Gesture control
 
 The components used on the transmitter side include a 2 axis accelerometer(ADXL335), an encoder(HT12E), a 433MHz RF     transmitter, a simple copper wire to be used as an antenna and the arduino uno board built using the ATmega32 chip. 
-Connect pins 
+Connect the X and Y pins of the accelerometer to analog pins A0 and A1 of the Arduino board. Also connect the digital pins 10, 11, 12 and 13 of the Arduino to pins 8, 9, 10 and 11 of the digital encoder HT12E. The data pin of the transmitter is connected to DOUT (Pin 17) of the encoder. The rest of the connections are as shown in the wiring diagram.
+
+
+2. Receiver side: Vehicle control
+
+The components used on the receiver side include a 433MHz RF receiver, a decoder( HT12D), 2 dual H-bridge motor drivers( L298N), 4 motors and an ultrasonic sensor(HC-SR04).
+Connect the 2 data pins of the RF receiver to the DIN pin( Pin 14) of the decoder. The digital output pins 10,11,12 and 13 of the decoder are connected to pins 16,17,18 and 19 to read the decoded data. This data is in turn used for the motor control using an H bridge with the following connections made for the 4 motors, each having an enable pin and 2 IN pins:
+
+
+#define L298N_L_EN_B  (GPIO_PIN_9)
+#define L298N_L_IN_3  (GPIO_PIN_11)
+#define L298N_L_IN_4  (GPIO_PIN_8)
+
+#define L298N_L_EN_A  (GPIO_PIN_10)
+#define L298N_L_IN_1  (GPIO_PIN_13)
+#define L298N_L_IN_2  (GPIO_PIN_12)
+
+#define L298N_R_EN_A  (GPIO_PIN_6)
+#define L298N_R_IN_1  (GPIO_PIN_7)
+#define L298N_R_IN_2  (GPIO_PIN_4)
+
+#define L298N_R_EN_B  (GPIO_PIN_5)
+#define L298N_R_IN_3  (GPIO_PIN_3)
+#define L298N_R_IN_4  (GPIO_PIN_2)
+
+
+
+
+
 
