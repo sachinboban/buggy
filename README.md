@@ -9,8 +9,7 @@ or right turn.
 ## Features
 * Wireless control
 * Forward/Backward motion with 3-level speed controlled
-* Turn Left/Right
-* Turn Left/Right while moving Forward/Backward
+* Turn Left/Right both with and without forward/backward motion
 
 # Software requirements
 
