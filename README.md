@@ -1,13 +1,15 @@
-# Gesture Controlled Robot
-A gesture controlled robot is a simple vehicle, whose movement is
-controlled by the gestures or movement of a simple controller. Depending on the
-gesture made using the controller, the robot can move forward, backward, left,
-right or come to a halt.
+# Buggy
+![alt text](docs/buggy.jpg)
+
+Buggy is a simple gesture controlled robot. A gesture controlled robot is a
+simple vehicle, whose movement is controlled by the gestures or movement of a
+simple controller. Depending on the gesture made using the controller, the buggy
+can move forward, backward, left, right and  come to a halt.
 
 ## Features
 * Wireless control
 * Forward/Backward motion with 3-level speed controls
-* Turn Left/Right both with and without forward/backward motion
+* Turn Left/Right both with or without forward/backward motion
 * Front obstacle sensing to prevent collision during motion
 
 ## File organization
@@ -19,7 +21,7 @@ right or come to a halt.
   + Encoder + Transmitter: `transmit.h`, `transmit.cpp`
   + Helper macros: `reg_ops.h`
   + Main: `gesture_control.ino`
- 
+
 * `vehicle_control/`: Source code for vehicle controller.
   + GPIO: `gpio.h`, `gpio.cpp`
   + Obstacle detection & safe distance: `distance.h`, `distance.cpp`
